@@ -1,7 +1,6 @@
 /******************************************************************/
-//Seg_LCD.c	Rev 1.0	8/20/2014 EPH Initial version									//
-//Author: Ethan Hettwer																						//
-//Purpose:  Allow for easy control of Seg_LCD											//
+//Seg_LCD.c							  //																					//
+//Purpose:  initialize and control segment LCD			  //
 /******************************************************************/
 
 #include "MKL46Z4.h"
