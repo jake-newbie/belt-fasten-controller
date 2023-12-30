@@ -2,7 +2,6 @@
 #include "Seg_LCD.h"
 #include "board.h"
 
-
 #define RED_LED 1u << 29
 #define GREEN_LED 1u << 5
 int32_t volatile msTicks = 0;
@@ -40,12 +39,6 @@ void SysTick_Handler(void) {
     msTicks++;
 }
 
-void Delay(uint32_t TIME) {
-    while (msTicks < TIME)
-        ;
-    msTicks = 0;
-}
-
 void PORTC_PORTD_IRQHandler(void) {
 		if ((PTC->PDIR & (1<<12)) == 0){}
 		if ((PTC->PDIR & (1<<3)) == 0){
@@ -68,15 +61,15 @@ int main(void) {
 					PTD->PCOR = GREEN_LED;
 					while((PTC->PDIR & (1 << 3)) != 0) {
 						msTicks = 0;
-					while((PTC->PDIR & (1 << 3)) != 0 && msTicks < 10000 && (PTC->PDIR & (1 << 12)) != 0){
-						segLCD_Time_count(msTicks);
-					}
-					while ((PTC->PDIR & (1 << 3)) != 0 && (PTC->PDIR & (1 << 12)) != 0) {
-						PTE->PCOR = RED_LED;
-						SegLCD_SeatBelt();
-					}
-					PTE->PSOR = RED_LED;
-					SegLCD_SeatBeltOff();
+						while((PTC->PDIR & (1 << 3)) != 0 && msTicks < 10000 && (PTC->PDIR & (1 << 12)) != 0){
+							segLCD_Time_count(msTicks);
+						}
+						while ((PTC->PDIR & (1 << 3)) != 0 && (PTC->PDIR & (1 << 12)) != 0) {
+							PTE->PCOR = RED_LED;
+							SegLCD_SeatBelt();
+						}
+						PTE->PSOR = RED_LED;
+						SegLCD_SeatBeltOff();
 					}
 				}
 				if(state == -1){
