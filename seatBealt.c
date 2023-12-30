@@ -1,6 +1,6 @@
 /******************************************************************/
-//seatBelt.c								//																				//
-//Purpose:  main program of project										//
+//seatBelt.c							  //																				//
+//Purpose:  main program of project		         	  //
 /******************************************************************/
 
 #include "MKL46z4.h"
