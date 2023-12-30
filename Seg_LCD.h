@@ -1,7 +1,5 @@
 /******************************************************************/
-//Seg_LCD.h	Rev 1.0	8/20/2014 EPH Initial version									//
-//Author: Ethan Hettwer																						//
-//Purpose:  Allow for easy control of Seg_LCD											//
+//Seg_LCD.h	                                        							//
 /******************************************************************/
 
 #ifndef _SEG_LCD_H
