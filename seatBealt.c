@@ -49,34 +49,34 @@ void PORTC_PORTD_IRQHandler(void) {
 }
 
 int main(void) {
-    BOARD_BootClockRUN();
-    SegLCD_Init();
-    init_all();
-    init_SysTick_interrupt();
+		BOARD_BootClockRUN();
+		SegLCD_Init();
+		init_all();
+		init_SysTick_interrupt();
 		NVIC_SetPriority(PORTC_PORTD_IRQn,1);
 		NVIC_SetPriority(SysTick_IRQn,0);
-    while (1) {
-				msTicks = 0;
-				if(state == 1){
-					PTD->PCOR = GREEN_LED;
-					while((PTC->PDIR & (1 << 3)) != 0) {
-						msTicks = 0;
-						while((PTC->PDIR & (1 << 3)) != 0 && msTicks < 10000 && (PTC->PDIR & (1 << 12)) != 0){
-							segLCD_Time_count(msTicks);
-						}
-						while ((PTC->PDIR & (1 << 3)) != 0 && (PTC->PDIR & (1 << 12)) != 0) {
-							PTE->PCOR = RED_LED;
-							SegLCD_SeatBelt();
-						}
-						PTE->PSOR = RED_LED;
-						SegLCD_SeatBeltOff();
+		while (1) {
+			msTicks = 0;
+			if(state == 1){
+				PTD->PCOR = GREEN_LED;
+				while((PTC->PDIR & (1 << 3)) != 0) {
+					msTicks = 0;
+					while((PTC->PDIR & (1 << 3)) != 0 && msTicks < 10000 && (PTC->PDIR & (1 << 12)) != 0){
+						segLCD_Time_count(msTicks);
 					}
-				}
-				if(state == -1){
-					PTD->PSOR = GREEN_LED;
+					while ((PTC->PDIR & (1 << 3)) != 0 && (PTC->PDIR & (1 << 12)) != 0) {
+						PTE->PCOR = RED_LED;
+						SegLCD_SeatBelt();
+					}
 					PTE->PSOR = RED_LED;
 					SegLCD_SeatBeltOff();
 				}
+			}
+			if(state == -1){
+				PTD->PSOR = GREEN_LED;
+				PTE->PSOR = RED_LED;
+				SegLCD_SeatBeltOff();
+			}
 		}
-    return 0;
+		return 0;
 }
