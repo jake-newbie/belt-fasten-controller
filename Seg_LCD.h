@@ -4,18 +4,15 @@
 //Purpose:  Allow for easy control of Seg_LCD											//
 /******************************************************************/
 
-#ifndef __SEG_LCD_H_
-#define __SEG_LCD_H_
+#ifndef _SEG_LCD_H
+#define _SEG_LCD_H
 
 #include "MKL46Z4.h"
 
 //Function Declarations
 void SegLCD_Init(void);
 void SegLCD_Set(uint8_t Value,uint8_t Digit);
-void SegLCD_DisplayDecimal(uint16_t Value);
-void SegLCD_DisplayHex(uint16_t Value);
-void SegLCD_DisplayTime(uint8_t Value1, uint8_t Value2);
-void SegLCD_DisplayError(uint8_t ErrorNum);
+void segLCD_Time_count(uint8_t Value);
 void SegLCD_SeatBelt(void);
 void SegLCD_SeatBeltOff(void);
 
